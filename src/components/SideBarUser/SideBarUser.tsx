@@ -9,7 +9,7 @@ import StethoscopeIcon from "@/assets/SideBarAssets/stethoscope.png";
 
 const SideBarUser = () => {
   return (
-    <div className="w-max h-full bg-[#ffff] border-r-[1px] border-[#00000026] flex flex-col justify-between">
+    <div className="w-[200px] h-full bg-[#ffff] border-r-[1px] border-[#00000026] flex flex-col justify-between">
       <div className="flex flex-col">
         <div className="flex flex-row items-center w-max h-max text-[1.2em] text-[#2563EB] italic font-bold px-4 py-2">
           <Image
@@ -19,7 +19,7 @@ const SideBarUser = () => {
           />
           <p>MedPrep</p>
         </div>
-        <div className="py-2 flex flex-col border-t-[1px] border-[#00000026] text-[0.85em] font-600">
+        <div className="w-full h-max py-2 flex flex-col border-t-[1px] border-[#00000026] text-[0.85em] font-600">
           <div className="flex flex-row items-center w-full h-max py-[6px] px-4 hover:bg-[#aac5ff] hover:cursor-pointer hover:shadow-[-2px_0px_0px_0px_blue_inset]">
             <Image
               src={HomeIcon}
@@ -65,7 +65,6 @@ const SideBarUser = () => {
             <p>Courses</p>
           </div>
         </div>
-        <div></div>
       </div>
       <div className="w-full h-max py-2 border-t-[1px] border-[#00000026]">
         <div className="w-full px-4 py-[4px] h-max flex flex-row items-center hover:cursor-pointer hover:bg-[#aac5ff] hover:shadow-[-2px_0px_0px_0px_blue_inset]">
