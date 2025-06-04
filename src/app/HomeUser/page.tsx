@@ -15,12 +15,12 @@ import DotIcon from "@/assets/HomeUserAssets/dot.png";
 const Homeuser = () => {
   return (
     <div className="flex flex-row w-full h-full bg-[#FAFAFA]">
-      <SideBarUser />
+      {/* <SideBarUser /> */}
       <div className="w-full h-full py-2 px-4 flex flex-col">
-        <HeaderUserPage
+        {/* <HeaderUserPage
           Title="Welcome Back, Yassir!"
           subTitle="this is the Home Page!"
-        />
+        /> */}
         <Notification
           image={CalendarIcon}
           Title="bonjour"
