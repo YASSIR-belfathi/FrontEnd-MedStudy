@@ -1,6 +1,6 @@
-import HeaderUserPage from "@/components/HeaderUserPage/HeaderUserPage";
+// import HeaderUserPage from "@/components/HeaderUserPage/HeaderUserPage";
 import Notification from "@/components/Notification/Notification";
-import SideBarUser from "@/components/SideBarUser/SideBarUser";
+// import SideBarUser from "@/components/SideBarUser/SideBarUser";
 import CalendarIcon from "@/assets/NotificationAssets/calendar.png";
 import Image from "next/image";
 import CheckMarkIcon from "@/assets/HomeUserAssets/checkmark.png";
