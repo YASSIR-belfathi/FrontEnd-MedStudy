@@ -26,7 +26,6 @@ import { FaPause } from "react-icons/fa6";
 import { MdCancel } from "react-icons/md";
 
 
-// Type definitions
 interface Task {
   id: string;
   subject: string;
@@ -57,7 +56,6 @@ interface NewTaskForm {
   priority: 'High' | 'Medium' | 'Low';
 }
 
-// Modal Component
 interface TaskModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -186,7 +184,6 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSubmit, column
   );
 };
 
-// Sortable Task Item Component
 interface SortableTaskProps {
   task: Task;
   isDragging?: boolean;
@@ -216,7 +213,7 @@ const SortableTask: React.FC<SortableTaskProps> = ({ task, isDragging = false })
         style={style}
         className="bg-gray-50 rounded-lg p-3 border-l-4 border-gray-200 flex-shrink-0 opacity-50"
       >
-        {/* Placeholder while dragging */}
+    
       </div>
     );
   }
@@ -249,7 +246,6 @@ const SortableTask: React.FC<SortableTaskProps> = ({ task, isDragging = false })
   );
 };
 
-// Task Item for Drag Overlay
 const TaskOverlay: React.FC<{ task: Task }> = ({ task }) => (
   <div className="bg-gray-50 rounded-lg p-3 border-l-4 border-blue-400 flex-shrink-0 shadow-2xl rotate-3 scale-105 border">
     <div className="text-xs text-gray-500 font-medium mb-1">
@@ -429,16 +425,15 @@ const ProgressTracker: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedColumnId, setSelectedColumnId] = useState<string>('');
 
-  // Configure sensors for better touch support
+  
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
-        distance: 8, // 8px movement required to start dragging
+        distance: 8,
       },
     })
   );
 
-  // Calculate stats based on current state
   const stats: Stat[] = [
     { 
       value: columns.reduce((total, col) => total + col.tasks.length, 0), 
@@ -463,7 +458,6 @@ const ProgressTracker: React.FC = () => {
     }
   ];
 
-  // Find task and its column
   const findTaskAndColumn = (taskId: string) => {
     for (const column of columns) {
       const task = column.tasks.find(t => t.id === taskId);
@@ -518,16 +512,15 @@ const ProgressTracker: React.FC = () => {
     const activeId = active.id as string;
     const overId = over.id as string;
 
-    // Find the active task and column
     const activeResult = findTaskAndColumn(activeId);
     if (!activeResult) return;
 
     const { task: activeTask, column: activeColumn } = activeResult;
 
-    // Check if we're hovering over a column or task
+  
     let overColumn = columns.find(col => col.id === overId);
     if (!overColumn) {
-      // We might be hovering over a task, find its column
+  
       const overResult = findTaskAndColumn(overId);
       if (overResult) {
         overColumn = overResult.column;
@@ -536,17 +529,16 @@ const ProgressTracker: React.FC = () => {
 
     if (!overColumn || activeColumn.id === overColumn.id) return;
 
-    // Move task to different column
     setColumns(prevColumns => {
       return prevColumns.map(column => {
         if (column.id === activeColumn.id) {
-          // Remove from source column
+          
           return {
             ...column,
             tasks: column.tasks.filter(task => task.id !== activeId)
           };
         } else if (column.id === overColumn.id) {
-          // Add to target column
+      
           return {
             ...column,
             tasks: [...column.tasks, activeTask]
@@ -566,13 +558,12 @@ const ProgressTracker: React.FC = () => {
     const activeId = active.id as string;
     const overId = over.id as string;
 
-    // Find the active task's current column
     const activeResult = findTaskAndColumn(activeId);
     if (!activeResult) return;
 
     const { column: activeColumn } = activeResult;
 
-    // Check if we're reordering within the same column
+  
     const overResult = findTaskAndColumn(overId);
     if (overResult && overResult.column.id === activeColumn.id) {
       const oldIndex = activeColumn.tasks.findIndex(task => task.id === activeId);
@@ -623,7 +614,7 @@ const ProgressTracker: React.FC = () => {
               id={column.id}
               className="bg-white rounded-lg shadow-sm h-[600px] flex flex-col text-gray-600"
             >
-              {/* Column Header */}
+          
               <div className="flex items-center justify-between p-4 pb-2 flex-shrink-0">
                 <div className="flex items-center gap-2">
                   <span className="text-lg">{column.icon}</span>
@@ -634,7 +625,7 @@ const ProgressTracker: React.FC = () => {
                 </span>
               </div>
 
-              {/* Tasks Container */}
+      
               <div className="flex-1 overflow-y-auto px-2 pb-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent hover:scrollbar-thumb-gray-400 mb-4">
                 <SortableContext 
                   items={column.tasks.map(task => task.id)}
@@ -648,8 +639,7 @@ const ProgressTracker: React.FC = () => {
                         isDragging={activeTask?.id === task.id}
                       />
                     ))}
-                    
-                    {/* Add Task Button */}
+                
                     <button 
                       onClick={() => handleAddTask(column.id)}
                       className="w-full text-center text-md text-gray-600 hover:text-gray-600 py-2 px-2 rounded-lg border-2 border-dashed border-gray-300 hover:border-gray-400 transition-all duration-200 flex-shrink-0 cursor-pointer bg-gray-100 hover:bg-gray-200"
@@ -663,12 +653,12 @@ const ProgressTracker: React.FC = () => {
           ))}
         </div>
 
-        {/* Drag Overlay */}
+      
         <DragOverlay>
           {activeTask ? <TaskOverlay task={activeTask} /> : null}
         </DragOverlay>
 
-        {/* Task Modal */}
+       
         <TaskModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
