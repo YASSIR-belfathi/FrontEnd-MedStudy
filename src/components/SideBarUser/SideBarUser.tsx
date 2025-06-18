@@ -2,11 +2,9 @@
 import Image from "next/image";
 import ProfileIcon from "@/assets/SideBarAssets/profile.png";
 import { 
-  FaHome, 
-  FaBrain, 
-  FaBook, 
+ 
   FaChartLine, 
-  FaGraduationCap, 
+
   FaStethoscope,
   FaEnvelope,
   FaFolder,
@@ -65,7 +63,7 @@ const SideBarUser = ({ onClick, selectedItem }: SidebarProps) => {
               <div>
                 <div className="flex flex-row items-center w-max h-max text-[1.2em] text-[#2563EB] italic font-bold px-4 py-2">
           
-          <p>MedPrep</p>
+          <p>MedStudy</p>
         </div>
               </div>
             </div>
@@ -153,9 +151,7 @@ const SideBarUser = ({ onClick, selectedItem }: SidebarProps) => {
                     9
                   </span>
                 )}
-                {item.hasNotification && !isExpanded && (
-                  <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-                )}
+              
               </button>
             ))}
           </nav>
