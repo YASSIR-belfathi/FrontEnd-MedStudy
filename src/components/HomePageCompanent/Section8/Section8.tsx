@@ -11,7 +11,7 @@ const Section8 = () => {
         <p className="text-[2em] text-black mx-4">Contact</p>
         <hr className="w-[100px] h-[5px] rounded-lg border-none bg-[#55F2C8]" />
       </div>
-      <div className="w-full h-max px-6 grid grid-cols-3 gap-10">
+      <div className="w-full h-max px-6 grid max-md:grid-cols-1 md:grid-cols-3 gap-10">
         <div className="col-span-1 w-full h-max px-4 py-2 rounded-lg bg-[#AEFFEF] text-[black] font-[500] flex flex-col">
           <div className="w-full h-max flex justify-center">
             <Image

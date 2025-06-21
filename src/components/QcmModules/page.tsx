@@ -58,7 +58,7 @@ const QcmModules = () => {
   const search_input = document.getElementsByClassName("search_input");
 
   function SearchOption() {
-    const string_search = search_input[0].value ?? "";
+    const string_search = (search_input[0] as HTMLInputElement).value ?? "";
     const list_cards_components = All_List_cards.filter((cards) => {
       return cards.title.toUpperCase().includes(string_search.toUpperCase());
     });

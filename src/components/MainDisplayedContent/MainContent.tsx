@@ -1,7 +1,7 @@
-import EnrolledCourses from "@/app/EnrolledCourses/page";
-import Homeuser from "@/app/HomeUser/page";
-import ProgressTracker from "@/app/ProgressTracker/page";
-import QcmModules from "@/app/QcmModules/page";
+import EnrolledCourses from "@/components/EnrolledCourses/page";
+import Homeuser from "@/components/HomeUser/page";
+import ProgressTracker from "@/components/ProgressTracker/page";
+import QcmModules from "@/components/QcmModules/page";
 import React from "react";
 interface MainContentProps {
   selectedItem: string;

@@ -3,28 +3,40 @@
 import Image from "next/image";
 import FirstImage from "@/assets/HomePageAssets/Section4/jglw_bke0_220113.jpg";
 import ArrowIcon from "@/assets/HomePageAssets/Section4/right-arrow (1).png";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 const Section4 = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [offset, setOffSet] = useState(0);
+  const refChildren1Div = useRef<HTMLDivElement>(null);
+  const refChildren2Div = useRef<HTMLDivElement>(null);
 
-  const cardWidth = 310;
-  const maxOffset = -(cardWidth * 3);
+  const prevCardWidth = useRef(340);
+  const afterCardWidth = useRef(340);
 
-  function previousButton() {
-    const newOffset = Math.min(offset + cardWidth, 0);
-    setOffSet(newOffset);
-    if (ref.current) {
-      ref.current.style.transform = `translateX(${newOffset}px)`;
+  const prevContent = () => {
+    if (refChildren1Div.current && prevCardWidth.current <= 340 * 3) {
+      refChildren1Div.current.style.transform = `translateX(-${prevCardWidth.current}px)`;
+      prevCardWidth.current += 340;
+      afterCardWidth.current -= 340;
     }
-  }
+  };
 
-  const afterButton = () => {
-    const newOffset = Math.max(offset - cardWidth, maxOffset);
-    setOffSet(newOffset);
-    if (ref.current) {
-      ref.current.style.transform = `translateX(${newOffset}px)`;
+  const afterContent = () => {
+    if (refChildren1Div.current && afterCardWidth.current <= 0) {
+      refChildren1Div.current.style.transform = `translateX(${afterCardWidth.current}px)`;
+      prevCardWidth.current -= 340;
+      afterCardWidth.current += 340;
+    }
+  };
+
+  const pauseAnimation = (value: boolean) => {
+    if (refChildren1Div.current && refChildren2Div.current) {
+      if (value) {
+        refChildren1Div.current.style.animationPlayState = "paused";
+        refChildren2Div.current.style.animationPlayState = "Paused";
+      } else {
+        refChildren1Div.current.style.animationPlayState = "running";
+        refChildren2Div.current.style.animationPlayState = "running";
+      }
     }
   };
 
@@ -38,12 +50,12 @@ const Section4 = () => {
         <p className="text-[2em] text-black mx-4">Catalogue</p>
         <hr className="w-[100px] h-[5px] rounded-lg border-none bg-[#55F2C8]" />
       </div>
-      <div className="w-full h-max gap-10 py-4 overflow-x-hidden relative">
+      <div className="w-full flex overflow-hidden flex-row h-max py-4 relative gap-10">
         <div
-          ref={ref}
-          className="container_catalogue transition-transform duration-500 ease-in-out w-max h-max flex flex-row gap-10 justify-start"
+          ref={refChildren1Div}
+          className="container_catalogue w-max h-max flex flex-row gap-10 transition-transform duration-500 ease-in-out"
         >
-          <div className="w-max h-max flex flex-col rounded-lg border-[2px] border-[#000000] shadow-[0px_0px_7px_0px_black] shrink-0">
+          <div className="w-max h-max flex flex-col rounded-lg border-[2px] border-[#000000] shadow-[0px_0px_7px_0px_black]">
             <Image
               src={FirstImage}
               alt="en-cours"
@@ -56,7 +68,7 @@ const Section4 = () => {
               <p className="w-max h-max">7 semestres</p>
             </div>
           </div>
-          <div className="w-max h-max flex flex-col rounded-lg border-[2px] border-[#000000] shadow-[0px_0px_7px_0px_black] shrink-0">
+          <div className="w-max h-max flex flex-col rounded-lg border-[2px] border-[#000000] shadow-[0px_0px_7px_0px_black]">
             <Image
               src={FirstImage}
               alt="en-cours"
@@ -69,7 +81,7 @@ const Section4 = () => {
               <p className="w-max h-max">7 semestres</p>
             </div>
           </div>
-          <div className="w-max h-max flex flex-col rounded-lg border-[2px] border-[#000000] shadow-[0px_0px_7px_0px_black] shrink-0">
+          <div className="w-max h-max flex flex-col rounded-lg border-[2px] border-[#000000] shadow-[0px_0px_7px_0px_black]">
             <Image
               src={FirstImage}
               alt="en-cours"
@@ -82,7 +94,7 @@ const Section4 = () => {
               <p className="w-max h-max">7 semestres</p>
             </div>
           </div>
-          <div className="w-max h-max flex flex-col rounded-lg border-[2px] border-[#000000] shadow-[0px_0px_7px_0px_black] shrink-0">
+          <div className="w-max h-max flex flex-col rounded-lg border-[2px] border-[#000000] shadow-[0px_0px_7px_0px_black]">
             <Image
               src={FirstImage}
               alt="en-cours"
@@ -96,11 +108,20 @@ const Section4 = () => {
             </div>
           </div>
         </div>
-        <div className="w-full h-full absolute px-2 py-4 justify-between items-center top-0 flex flex-row">
+        <div
+          id="container_button"
+          className="w-full h-full absolute px-2 py-4 justify-between items-center top-0 flex flex-row "
+          onMouseEnter={() => {
+            pauseAnimation(true);
+          }}
+          onMouseLeave={() => {
+            pauseAnimation(false);
+          }}
+        >
           <div
             className="w-max h-max p-4 rounded-[50%] border-[1px] border-black bg-white shadow-[0px_0px_4px_0px_#bebebe] hover:cursor-pointer"
             onClick={() => {
-              previousButton();
+              prevContent();
             }}
           >
             <Image
@@ -112,7 +133,7 @@ const Section4 = () => {
           <div
             className="w-max h-max p-4 rounded-[50%] border-[1px] border-black bg-white shadow-[0px_0px_4px_0px_#bebebe] hover:cursor-pointer"
             onClick={() => {
-              afterButton();
+              afterContent();
             }}
           >
             <Image

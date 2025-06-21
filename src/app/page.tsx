@@ -1,3 +1,5 @@
+"use client";
+
 import Footer from "@/components/HomePageCompanent/Footer/Footer";
 import LandingPageHome from "@/components/HomePageCompanent/Home/LandingPageHome";
 import Section2 from "@/components/HomePageCompanent/Section2/Section2";
@@ -8,9 +10,20 @@ import Section6 from "@/components/HomePageCompanent/Section6/Section6";
 import Section7 from "@/components/HomePageCompanent/Section7/Section7";
 import Section8 from "@/components/HomePageCompanent/Section8/Section8";
 import NavBarLandingPage from "@/components/NavBarLandingPage/NavBarLandingPage";
+import Loading from "@/app/loading";
+import { useEffect, useState } from "react";
 
-const LandingPage = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+const LandingPage = () => {
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setIsReady(true);
+    }, 2000);
+    return () => clearTimeout(timeOut);
+  }, []);
+
+  if (!isReady) return <Loading />;
 
   return (
     <div className="w-full h-max flex flex-col relative">

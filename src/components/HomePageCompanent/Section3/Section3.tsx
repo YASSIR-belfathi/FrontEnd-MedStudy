@@ -9,8 +9,8 @@ const Section3 = () => {
         <p className="text-[2em] text-black mx-4">Présentation</p>
         <hr className="w-[100px] h-[5px] rounded-lg border-none bg-[#55F2C8]" />
       </div>
-      <div className="w-full h-max flex flex-row gap-8 items-center">
-        <div className="w-[50%] h-max text-center text-[1.1em] font-[400]">
+      <div className="w-full h-max flex md:flex-row max-md:flex-col-reverse gap-8 items-center">
+        <div className="md:w-[50%] max-md:h-[75%] h-max text-center text-[1.1em] font-[400]">
           <p className="italic">
             &#8221;Notre solution Medical Guide est une solution qui a pour but
             d&apos;aider les étudiants du médecine dans les différentes
@@ -19,7 +19,7 @@ const Section3 = () => {
             module&#8221;.
           </p>
         </div>
-        <div className="w-[50%] h-max flex justify-center relative">
+        <div className="md:w-[50%] max-md:h-[75%] h-max flex justify-center relative">
           <svg
             width="402"
             height="302"
