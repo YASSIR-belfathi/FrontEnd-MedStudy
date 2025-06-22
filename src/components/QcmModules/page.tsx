@@ -89,7 +89,7 @@ const QcmModules = () => {
             <CiSearch size={20} />
           </div>
         </div>
-        <div className="w-full flex flex-row justify-start gap-2 bg-transparent text-black text-[0.8em]">
+        <div className="w-full flex flex-wrap flex-row justify-start gap-2 bg-transparent text-black text-[0.8em]">
           <div
             className="w-max h-max px-4 py-[1px] bg-gray-200 border-gray-300 border-[2px] rounded-[15px] hover:cursor-pointer hover:opacity-75"
             onClick={() => {
@@ -140,7 +140,7 @@ const QcmModules = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-4 w-full h-max bg-transparent gap-2">
+      <div className="grid lg:grid-cols-4 max-lg::grid-cols-1 w-full h-max bg-transparent gap-2">
         {list_cards.map((card) => {
           return (
             <>

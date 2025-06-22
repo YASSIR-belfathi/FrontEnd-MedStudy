@@ -26,7 +26,7 @@ const Homeuser = () => {
           Title="bonjour"
           description="this is bonjour"
         />
-        <div className="grid grid-cols-4 gap-8 w-full h-max">
+        <div className="grid md:grid-cols-4 max-md:grid-cols-1 gap-8 w-full h-max">
           <div className="col-span-1 bg-white text-[black] flex flex-col p-4 rounded-lg shadow-[0px_0px_3px_0px_#808080]">
             <div className="flex flex-row w-full h-max items-center mb-4">
               <div className="w-max h-max mr-2">
@@ -114,8 +114,8 @@ const Homeuser = () => {
             <p className="text-[0.8em] text-blue-500 font-[500]">View All</p>
           </div>
           <div className="w-full h-max flex flex-col">
-            <div className="w-full h-max border-b-[1px] border-[#ececec] flex flex-row justify-between items-center pb-2 mb-2">
-              <div className="w-max h-max flex flex-row items-center">
+            <div className="w-full h-max border-b-[1px] border-[#ececec] flex md:flex-row max-md:flex-col max-md:gap-2 justify-between items-center pb-2 mb-2">
+              <div className="max-md:w-full max-md:justify-start md:w-max h-max flex flex-row items-center">
                 <div className="p-[6px] bg-amber-400 rounded-lg">
                   <Image
                     src={HeartIcon}
@@ -150,8 +150,8 @@ const Homeuser = () => {
                 </button>
               </div>
             </div>
-            <div className="w-full h-max border-b-[1px] border-[#ececec] flex flex-row justify-between items-center pb-2 mb-2">
-              <div className="w-max h-max flex flex-row items-center">
+            <div className="w-full h-max border-b-[1px] border-[#ececec] flex md:flex-row max-md:flex-col max-md:gap-2 justify-between items-center pb-2 mb-2">
+              <div className="max-md:w-full max-md:justify-start md:w-max h-max flex flex-row items-center">
                 <div className="p-[6px] bg-amber-400 rounded-lg">
                   <Image
                     src={BrainIcon}
@@ -186,8 +186,8 @@ const Homeuser = () => {
                 </button>
               </div>
             </div>
-            <div className="w-full h-max border-b-[1px] border-[#ececec] flex flex-row justify-between items-center pb-2 mb-2">
-              <div className="w-max h-max flex flex-row items-center">
+            <div className="w-full h-max border-b-[1px] border-[#ececec] flex md:flex-row max-md:flex-col max-md:gap-2 justify-between items-center pb-2 mb-2">
+              <div className="max-md:w-full max-md:justify-start md:w-max h-max flex flex-row items-center">
                 <div className="p-[6px] bg-amber-400 rounded-lg">
                   <Image
                     src={LungsIcon}
