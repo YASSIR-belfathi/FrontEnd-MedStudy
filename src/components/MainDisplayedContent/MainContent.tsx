@@ -1,7 +1,7 @@
 import EnrolledCourses from "@/components/EnrolledCourses/page";
 import Homeuser from "@/components/HomeUser/page";
 import ProgressTracker from "@/components/ProgressTracker/page";
-import QcmModules from "@/components/QcmModules/page";
+import QcmModules from "@/components/QcmModules/PageQcm";
 import React from "react";
 interface MainContentProps {
   selectedItem: string;
@@ -23,8 +23,8 @@ const MainContent = ({ selectedItem }: MainContentProps) => {
   };
 
   return (
-    <div>
-      <div className="mainContentdiv">{renderContent()}</div>
+    <div className="w-full h-full">
+      <div className="mainContentdiv w-full h-full">{renderContent()}</div>
     </div>
   );
 };

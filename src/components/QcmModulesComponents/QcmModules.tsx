@@ -4,7 +4,22 @@ import Cards from "@/components/QcmModulesComponents/cards";
 import { useState } from "react";
 import React from "react";
 
-const QcmModules = () => {
+interface contentHeaderType {
+  title: string;
+  number_questions: number;
+  est_time: number;
+  percentage: string;
+}
+
+interface QcmModulesType {
+  toggle_containt: () => void;
+  set_content_header: React.Dispatch<React.SetStateAction<contentHeaderType>>;
+}
+
+const QcmModules = ({
+  toggle_containt,
+  set_content_header,
+}: QcmModulesType) => {
   const All_List_cards = [
     {
       id: 1,
@@ -66,7 +81,19 @@ const QcmModules = () => {
   }
 
   return (
-    <div className="w-full h-max bg-transparent flex flex-col py-2">
+    <>
+      <div className="flex-shrink-0 py-2 px-4">
+        <div>
+          <div className="w-full h-max mb-2 text-black">
+            <h1 className="text-[2em] font-bold">QCM Modules</h1>
+          </div>
+          <div className="w-full h-max text-[#424242]">
+            <p className="text-[0.8em]">
+              choose a module to practice your knowledge!
+            </p>
+          </div>
+        </div>
+      </div>
       <div className="w-full h-max bg-[#ffffff] flex flex-col py-4 px-6 gap-2 rounded-lg shadow-[0px_0px_2px_0px_#e2e2e2] mb-4">
         <div className="w-full h-max flex flex-row gap-4">
           <input
@@ -155,12 +182,14 @@ const QcmModules = () => {
                 est_hour={card.est_hour}
                 progress_qcm={card.progress_qcm}
                 average_score={card.average_score}
+                toggle_function={toggle_containt}
+                set_name_containt={set_content_header}
               />
             </>
           );
         })}
       </div>
-    </div>
+    </>
   );
 };
 

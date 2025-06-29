@@ -47,19 +47,6 @@ const HeaderUserPage = ({ selectedItem }: HeaderUserPageProps) => {
           </div>
         );
 
-      case "QCM Modules":
-        return (
-          <div>
-            <div className="w-full h-max mb-2 text-black">
-              <h1 className="text-[2em] font-bold">QCM Modules</h1>
-            </div>
-            <div className="w-full h-max text-[#424242]">
-              <p className="text-[0.8em]">
-                choose a module to practice your knowledge!
-              </p>
-            </div>
-          </div>
-        );
       default:
         return (
           <div>

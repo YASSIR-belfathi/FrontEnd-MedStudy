@@ -1,6 +1,13 @@
 import Image, { StaticImageData } from "next/image";
 import { BsThreeDots } from "react-icons/bs";
 
+interface contentHeaderType {
+  title: string;
+  number_questions: number;
+  est_time: number;
+  percentage: string;
+}
+
 interface CardsTypeProps {
   image: StaticImageData;
   title: string;
@@ -11,6 +18,8 @@ interface CardsTypeProps {
   average_score: number;
   remaining_number: number;
   level: string;
+  toggle_function: () => void;
+  set_name_containt: React.Dispatch<React.SetStateAction<contentHeaderType>>;
 }
 
 const Cards = ({
@@ -23,6 +32,8 @@ const Cards = ({
   average_score,
   remaining_number,
   level,
+  toggle_function,
+  set_name_containt,
 }: CardsTypeProps) => {
   const colorLevel = (level: string) => {
     if (level === "Beginner") {
@@ -86,7 +97,18 @@ const Cards = ({
         </div>
       </div>
       <div className="w-full h-max gap-4 flex flex-row items-center">
-        <button className="w-full h-max py-[2px] rounded-lg border-none bg-blue-600 text-white flex justify-center items-center hover:cursor-pointer">
+        <button
+          className="w-full h-max py-[2px] rounded-lg border-none bg-blue-600 text-white flex justify-center items-center hover:cursor-pointer"
+          onClick={() => {
+            toggle_function();
+            set_name_containt({
+              title: title,
+              number_questions: questions_number,
+              est_time: est_hour,
+              percentage: progress_qcm,
+            });
+          }}
+        >
           Continue
         </button>
         <button className="w-max h-full rounded-lg border-[black] justify-center items-center hover:opacity-50 hover:cursor-pointer">
